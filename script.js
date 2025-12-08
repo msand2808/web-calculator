@@ -2,11 +2,14 @@ import { evaluate } from "https://cdn.jsdelivr.net/npm/mathjs@12.4.0/+esm";
 
 
 let expression = "";
+let ans = 0;
+let clicked = false;
 
 document.addEventListener('DOMContentLoaded', () => {
 
     const Expressionh2 = document.querySelector("#Expression");
     
+    //buttons of every number
     let numberButtons = [];   
     numberButtons[0] = document.querySelector("#btn0");
     numberButtons[1] = document.querySelector("#btn1");
@@ -19,17 +22,31 @@ document.addEventListener('DOMContentLoaded', () => {
     numberButtons[8] = document.querySelector("#btn8");
     numberButtons[9] = document.querySelector("#btn9");
 
+    //buttons of every operation
     const btnSum = document.querySelector("#btnSum");
+    const btnSub = document.querySelector("#btnSub");
+    const btnMul = document.querySelector("#btnMul");
+    const btnDiv = document.querySelector("#btnDiv");
 
+    //extra functions
+    const btnAns = document.querySelector("#btnAns");
+    const btnClear = document.querySelector("#btnClear");
     const btnEqual = document.querySelector("#btnEqual");
+    const btnParOpen = document.querySelector("#btnParOpen");
+    const btnParClose = document.querySelector("#btnParClose");
     
     for(let i = 0; i<10; i++){
         numberButtons[i].addEventListener('click', (evt)=>{
             evt.preventDefault();
 
+            if(!clicked){
+                Expressionh2.textContent = "";
+            }
+            clicked = true;
+
             expression += i;
 
-            Expressionh2.textContent = expression;
+            Expressionh2.textContent += i;
 
         })
     }
@@ -37,16 +54,118 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSum.addEventListener('click', (evt)=>{
         evt.preventDefault();
 
+        if(!clicked){
+            Expressionh2.textContent = "";
+        }
+        clicked = true;
+
         expression +='+';
 
-        Expressionh2.textContent = expression;
+        Expressionh2.textContent += '+';
     });
 
+    btnSub.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+
+        if(!clicked){
+            Expressionh2.textContent = "";
+        }
+        clicked = true;
+
+        expression += '-';
+        Expressionh2.textContent += '-';
+    });
+
+    btnMul.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+
+        if(!clicked){
+            Expressionh2.textContent = "";
+        }
+        clicked = true;
+
+        expression += '*';
+        Expressionh2.textContent += '*';
+    });
+
+    btnDiv.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+
+        if(!clicked){
+            Expressionh2.textContent = "";
+        }
+        clicked = true;
+
+        expression += '/';
+        Expressionh2.textContent += '/';
+    })
 
     btnEqual.addEventListener('click', (evt) =>{
         evt.preventDefault();
+        
+         if(!clicked){
+            return;
+        }
+        
         const result = evaluate(expression);
+        expression = result;
+
+        if(typeof(result) == "number"){
+            ans = result;
+        }else{
+            ans = 0;
+        }
+
         Expressionh2.textContent = result;
+
+        //clicked = false;
     });
+
+    btnAns.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+
+        if(!clicked){
+            Expressionh2.textContent = "";
+        }
+        clicked = true;
+
+        expression += ans;
+        Expressionh2.textContent += 'Ans';
+    });
+
+    btnClear.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+        Expressionh2.textContent = "Write a Expression:";
+        expression = "";
+        clicked = false;
+    });
+
+    btnParOpen.addEventListener('click', (evt) =>{
+        evt.preventDefault();
+
+        if(!clicked){
+            Expressionh2.textContent = "";
+        }
+        clicked = true;
+
+        expression += '(';
+        Expressionh2.textContent += '(';
+
+    });
+
+    btnParClose.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+
+        if(!clicked){
+            Expressionh2.textContent = "";
+        }
+        clicked = true;
+
+        expression += ')';
+        Expressionh2.textContent += ')';
+
+    });
+
+    
 
 });
