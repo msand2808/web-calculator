@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     numberButtons[7] = document.querySelector("#btn7");
     numberButtons[8] = document.querySelector("#btn8");
     numberButtons[9] = document.querySelector("#btn9");
+
+    const btnSum = document.querySelector("#btnSum");
+
+    const btnEqual = document.querySelector("#btnEqual");
     
     for(let i = 0; i<10; i++){
         numberButtons[i].addEventListener('click', (evt)=>{
@@ -29,5 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
     }
+
+    btnSum.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+
+        expression +='+';
+
+        Expressionh2.textContent = expression;
+    });
+
+
+    btnEqual.addEventListener('click', (evt) =>{
+        evt.preventDefault();
+        const result = evaluate(expression);
+        Expressionh2.textContent = result;
+    });
 
 });
