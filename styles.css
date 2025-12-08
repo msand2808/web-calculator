@@ -1,0 +1,9 @@
+#buttonsDiv button{
+    box-shadow: none;
+    
+}
+
+#buttonsDiv button:hover{
+    background-color: rgb(161, 204, 201);
+
+}
