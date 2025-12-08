@@ -7,6 +7,9 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="bootstrap.min .css">
     <link rel="stylesheet" href="styles.css">
+
+        <script type="module" src="script.js"></script>
+
 </head>
 
 <body>
@@ -16,12 +19,21 @@
                 <h1 class="text-center ">Calculator</h1>
 
                 <div class="container card mt-2 rounded">
-                    <h2 class="mt-2 mb-2">Write a Expression:</h2>
+                    <h2 id="Expression" class="mt-2 mb-2">Write a Expression:</h2>
                 </div>
 
 
                 <form action="">
                 <div id="buttonsDiv">
+
+                    <div class="d-flex justify-content-center mt-3">
+
+                        <button id="btnParOpen" class="btn btn-primary mx-2">(</button>
+                        <button id="btnParClose" class="btn btn-primary mx-2">)</button>
+                        <button  id="btnBack" class="btn btn-primary mx-2">Backspace</button>
+                        
+                    </div>
+
                     <div class="d-flex justify-content-center mt-3">
 
                         <button id="btn7" class="btn btn-primary mx-2">7</button>
@@ -67,6 +79,8 @@
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
