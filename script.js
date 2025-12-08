@@ -31,9 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //extra functions
     const btnAns = document.querySelector("#btnAns");
     const btnClear = document.querySelector("#btnClear");
-    const btnEqual = document.querySelector("#btnEqual");
     const btnParOpen = document.querySelector("#btnParOpen");
     const btnParClose = document.querySelector("#btnParClose");
+    const btnBack = document.querySelector("#btnBack");
+    
+    const btnEqual = document.querySelector("#btnEqual");
     
     for(let i = 0; i<10; i++){
         numberButtons[i].addEventListener('click', (evt)=>{
@@ -129,6 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         clicked = true;
 
+        if(Expressionh2.textContent[Expressionh2.textContent.length-1] >= '0' && Expressionh2.textContent[Expressionh2.textContent.length-1] <= '9'){
+            expression += `*${ans}`;
+            Expressionh2.textContent += '*Ans';
+            return;
+        }
+
         expression += ans;
         Expressionh2.textContent += 'Ans';
     });
@@ -166,6 +174,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    
+    btnBack.addEventListener('click', (evt)=>{
+        evt.preventDefault();
+
+        if(Expressionh2.textContent.trim() == "Type a Expression:"){
+            return;
+        }
+
+        if(Expressionh2.textContent[Expressionh2.textContent.length - 1] == 's'){
+            Expressionh2.textContent = Expressionh2.textContent.slice(0, -3);
+
+            Expressionh2.textContent += ans;
+
+        }else{
+            expression = expression.slice(0, -1);
+            Expressionh2.textContent = Expressionh2.textContent.slice(0,-1);
+
+            if(Expressionh2.textContent.trim() == ""){
+                Expressionh2.textContent = "Type a Expression:";
+                clicked = false;
+            }
+        }
+
+    });
 
 });
