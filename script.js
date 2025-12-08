@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnClear.addEventListener('click', (evt)=>{
         evt.preventDefault();
-        Expressionh2.textContent = "Write a Expression:";
+        Expressionh2.textContent = "Type an Expression:";
         expression = "";
         clicked = false;
     });
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnBack.addEventListener('click', (evt)=>{
         evt.preventDefault();
 
-        if(Expressionh2.textContent.trim() == "Type a Expression:"){
+        if(Expressionh2.textContent.trim() == "Type an Expression:"){
             return;
         }
 
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Expressionh2.textContent = Expressionh2.textContent.slice(0,-1);
 
             if(Expressionh2.textContent.trim() == ""){
-                Expressionh2.textContent = "Type a Expression:";
+                Expressionh2.textContent = "Type an Expression:";
                 clicked = false;
             }
         }
