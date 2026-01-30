@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnSub.addEventListener('click', (evt)=>{
         evt.preventDefault();
+        
 
         if(!clicked){
             Expressionh2.textContent = "";
